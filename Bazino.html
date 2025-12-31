@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <!-- تنظیمات پایه صفحه -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Mind</title>
+
+    <style>
+      /* تنظیمات عمومی */
+      * {
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+
+      /* پس‌زمینه کل صفحه */
+      body {
+        margin: 0;
+        height: 100vh;
+        background: radial-gradient(circle at top, #141414, #000);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+      }
+
+      /* کارت اصلی */
+      .container {
+        width: 92%;
+        max-width: 380px;
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 24px;
+        padding: 28px 22px 32px;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
+        text-align: center;
+        animation: fadeIn 1s ease;
+      }
+
+      /* انیمیشن ورود */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      /* FF00F4_50FF00_290239 */
+
+      /* لوگوی دایره‌ای */
+      .logo {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        margin: 0 auto 18px;
+        background: linear-gradient(135deg, #ddcbdc, #e2e8df);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 25px rgba(179, 65, 165, 0.6);
+        overflow: hidden; /* برش عکس داخل دایره */
+      }
+
+      /* عکس داخل لوگو */
+      .logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* بدون کشیدگی */
+      }
+
+      /* عنوان */
+      h1 {
+        margin: 0;
+        font-size: 26px;
+        font-weight: 600;
+      }
+
+      /* زیرعنوان */
+      .subtitle {
+        font-size: 14px;
+        opacity: 0.75;
+        margin: 8px 0 26px;
+      }
+
+      /* دکمه‌ها */
+      .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        text-decoration: none;
+        color: #ffffff;
+        padding: 15px;
+        margin: 14px 0;
+        border-radius: 14px;
+        transition: 0.25s;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* افکت هاور */
+      .btn::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.1);
+        opacity: 0;
+        transition: 0.25s;
+      }
+
+      .btn:hover::after {
+        opacity: 1;
+      }
+
+      .btn:hover {
+        transform: scale(1.04);
+      }
+
+      /* استایل اینستاگرام */
+      .instagram {
+        background: linear-gradient(30deg, #ddcbdc, #fd00f0, #ddcbdc);
+      }
+
+      /* استایل تلگرام */
+      .telegram {
+        background: linear-gradient(30deg, #ffffff, #50ff00, #ffffff);
+      }
+      .btn img {
+        width: 20px;
+        color: white;
+      }
+
+      /* فوتر */
+      footer {
+        margin-top: 26px;
+        font-size: 12px;
+        opacity: 0.5;
+        letter-spacing: 1px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- لوگو -->
+      <div class="logo">
+        <img src="IMG_5696.PNG" alt="logo" />
+      </div>
+
+      <!-- عنوان و توضیح -->
+      <h1>Bazino</h1>
+      <div class="subtitle">جایی برای فکر کردن، رقابت و لذت</div>
+
+      <!-- لینک اینستاگرام -->
+      <a
+        class="btn instagram"
+        href="https://instagram.com/bazino_family"
+        target="_blank"
+      >
+        دنبال کردن در اینستاگرام
+      </a>
+
+      <!-- لینک تلگرام -->
+      <a class="btn telegram" href="https://t.me/bazino_Family" target="_blank">
+        عضویت در تلگرام
+      </a>
+      <!-- لینک واتس اپ -->
+      <a
+        class="btn instagram"
+        href="https://chat.whatsapp.com/G7MR1vWRIyS0J6Hf8wNbqx"
+        target="_blank"
+      >
+        عضویت در واتس اپ
+      </a>
+      <!--اضافه کردن به مخاطبین -->
+      <a class="btn telegram" href="#" onclick="addContact()">
+        اضافه کردن به مخاطبین
+      </a>
+
+      <!-- فوتر -->
+      <footer>TAP • THINK • PLAY</footer>
+    </div>
+    <script>
+      function addContact() {
+        // محتوای فایل vCard
+        const vCard = `
+BEGIN:VCARD
+VERSION:3.0
+FN:Bazino
+TEL;TYPE=CELL:+989104872
+
+END:VCARD
+  `;
+
+        // ایجاد فایل برای دانلود
+        const blob = new Blob([vCard], { type: "text/vcard" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "contact.vcf";
+        link.click();
+      }
+    </script>
+  </body>
+</html>
